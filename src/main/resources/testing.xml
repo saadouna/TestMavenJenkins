@@ -1,0 +1,8 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="sampleTest" parallel="false">
+	<test name="MainTest">
+		<packages preserve-order="true" verbose="2">
+			<package name="parcours.*"/>
+		</packages>
+	</test>
+</suite>

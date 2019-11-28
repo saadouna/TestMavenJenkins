@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results total="6" passed="6" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2019-11-28T21:53:27Z" name="Default suite" finished-at="2019-11-28T21:53:27Z" duration-ms="90">
+    <groups>
+    </groups>
+    <test started-at="2019-11-28T21:53:27Z" name="Default test" finished-at="2019-11-28T21:53:27Z" duration-ms="90">
+      <class name="Parcours.Az2">
+        <test-method signature="Moins()[pri:0, instance:Parcours.Az2@7d68ef40]" started-at="2019-11-28T22:53:27Z" name="Moins" finished-at="2019-11-28T22:53:27Z" duration-ms="23" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Moins -->
+        <test-method signature="add()[pri:0, instance:Parcours.Az2@7d68ef40]" started-at="2019-11-28T22:53:27Z" name="add" finished-at="2019-11-28T22:53:27Z" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- add -->
+        <test-method signature="Mul()[pri:0, instance:Parcours.Az2@7d68ef40]" started-at="2019-11-28T22:53:27Z" name="Mul" finished-at="2019-11-28T22:53:27Z" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Mul -->
+      </class> <!-- Parcours.Az2 -->
+      <class name="Parcours.Az">
+        <test-method signature="Moins()[pri:0, instance:Parcours.Az@25b485ba]" started-at="2019-11-28T22:53:27Z" name="Moins" finished-at="2019-11-28T22:53:27Z" duration-ms="3" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Moins -->
+        <test-method signature="Mul()[pri:0, instance:Parcours.Az@25b485ba]" started-at="2019-11-28T22:53:27Z" name="Mul" finished-at="2019-11-28T22:53:27Z" duration-ms="3" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Mul -->
+        <test-method signature="add()[pri:0, instance:Parcours.Az@25b485ba]" started-at="2019-11-28T22:53:27Z" name="add" finished-at="2019-11-28T22:53:27Z" duration-ms="2" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- add -->
+      </class> <!-- Parcours.Az -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
