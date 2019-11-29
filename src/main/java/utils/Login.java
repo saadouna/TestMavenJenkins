@@ -1,7 +1,9 @@
 package utils;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -16,7 +18,10 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
+
 public class Login {
+	static String paysdepart,paysdestination,dateDepart,dateRetour,nom,prenom,cardName,numercard,moisCard,anneeCard,numerosecu;
+	
 	@Test
 	public static void Enregistrement(WebDriver driver) throws InterruptedException {
 
@@ -84,7 +89,8 @@ public class Login {
 	}
 
 	@Test
-	public static void reserverVol(WebDriver driver) throws InterruptedException {
+	public static void reserverVol(WebDriver driver) throws InterruptedException, IOException {
+		initializechamps();
 		// choose flight
 		driver.findElement(By.cssSelector("#tab-flight-tab-flp")).click();
 		// fill one way
@@ -92,17 +98,17 @@ public class Login {
 		driver.findElement(By.id("flight-type-roundtrip-label-flp")).click();
 		// fill from
 
-		driver.findElement(By.xpath("//*[@id=\"flight-origin-flp\"]")).sendKeys("Paris, France (ORY-Orly)");
+		driver.findElement(By.xpath("//*[@id=\"flight-origin-flp\"]")).sendKeys(""+paysdepart);
 		// fill destination
 
 		driver.findElement(By.xpath("//*[@id=\"flight-destination-flp\"]"))
-				.sendKeys("Casablanca, Morocco (CMN-Mohammed V)");
+				.sendKeys(""+paysdestination);
 
 		// choose date
 		driver.findElement(By.id("flight-departing-flp")).clear();
-		driver.findElement(By.id("flight-departing-flp")).sendKeys("12/12/2019");
+		driver.findElement(By.id("flight-departing-flp")).sendKeys(""+dateDepart);
 		driver.findElement(By.id("flight-returning-flp")).clear();
-		driver.findElement(By.id("flight-returning-flp")).sendKeys("30/12/2019");
+		driver.findElement(By.id("flight-returning-flp")).sendKeys(""+dateRetour);
 
 		// search
 
@@ -135,7 +141,7 @@ public class Login {
 	@Test
 	public static void chooseVol(WebDriver driver) throws InterruptedException, IOException
 	{	
-		Thread.sleep(3000);
+		Thread.sleep(4000);
 		//select aller				
 		
 		
@@ -216,8 +222,8 @@ public class Login {
 		
 		Thread.sleep(1500);
 		
-		driver.findElement(By.xpath("//input[@id='firstname[0]']")).sendKeys("saad");
-		driver.findElement(By.xpath("//input[@id='lastname[0]']")).sendKeys("moutmir");
+		driver.findElement(By.xpath("//input[@id='firstname[0]']")).sendKeys(""+nom);
+		driver.findElement(By.xpath("//input[@id='lastname[0]']")).sendKeys(""+prenom);
 		
 		driver.findElement(By.xpath("//select[@id='country_code[0]']")).click();
 		//((JavascriptExecutor) driver).executeScript("document.getElementById('ctl00_mainContent_ddl_Adult').style.display='block';");
@@ -233,16 +239,16 @@ public class Login {
 		
 		driver.findElement(By.xpath("//input[@id='no_insurance']")).click();
 		
-		driver.findElement(By.xpath("(//input[@name='cardholder_name'])[2]")).sendKeys("card name");
-		driver.findElement(By.xpath("//input[@id='creditCardInput']")).sendKeys("99999999999");
+		driver.findElement(By.xpath("(//input[@name='cardholder_name'])[2]")).sendKeys(""+cardName);
+		driver.findElement(By.xpath("//input[@id='creditCardInput']")).sendKeys(""+numercard);
 		
 		Select expiration_month = new Select(driver.findElement(By.name("expiration_month")));
-		expiration_month.selectByValue("12");
+		expiration_month.selectByValue(""+moisCard);
 		
 		Select expiration_year = new Select(driver.findElement(By.name("expiration_year")));
-		expiration_year.selectByValue("2021");
+		expiration_year.selectByValue(""+anneeCard);
 		
-		driver.findElement(By.xpath("//input[@id='new_cc_security_code']")).sendKeys("444");
+		driver.findElement(By.xpath("//input[@id='new_cc_security_code']")).sendKeys(""+numerosecu);
 		
 		
 		
@@ -366,6 +372,34 @@ public class Login {
 		wait.until(ExpectedConditions.visibilityOf(element));
 		element.click();
 		
+	}
+	
+	public static void initializechamps() throws IOException
+	{
+		BufferedReader br = new BufferedReader(new FileReader("Input.data"));
+		String line;
+		line = br.readLine();
+		   // process the line.
+		     // Do something with first line
+		      
+		       // Do something with second line
+		       
+		       // Split up the third line by space 
+		       String split[]= line.split(";"); // split[1] = "Mozart," so you may need to do a little more work there
+		    		   paysdepart=split[0];
+		    		   paysdestination=split[1];
+		    		   dateDepart=split[2];
+		    		   dateRetour=split[3];
+		    		   nom=split[4];
+		    		   prenom=split[5];
+		    		   cardName=split[6];
+		    		   numercard=split[7];
+		    		   moisCard=split[8];
+		    		   anneeCard=split[9];
+		    		   numerosecu=split[10];
+		   	
+		
+		br.close();
 	}
 	
 	
